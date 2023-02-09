@@ -1,0 +1,4 @@
+python extract_active_bboxes.py \
+--data-path /home/sj/Documents/data/volleyball/volleyball/videos/ \
+--output ./active_bboxes_output \ 
+--visualize

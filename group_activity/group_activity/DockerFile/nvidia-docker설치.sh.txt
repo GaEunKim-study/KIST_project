@@ -1,0 +1,39 @@
+step1. docker설치방법
+
+#도커 설치전
+apt-get update
+sudo apt-get update
+
+#이전에 존재하는 docker가 있다면 삭제
+remove before version
+sudo apt-get remove docker docker-engine docker.io
+
+#도커설치
+install docker
+sudo apt install docker.io
+start docker service
+sudo systemctl start docker
+sudo systemctl enable docker
+
+#check docker version
+docker --version
+
+
+step2. Nvidia Container Toolkit 설정
+
+#Stable repository 및 GPG key 설정
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+#install nvidia-docker
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+
+
+#restart docker daemon
+sudo systemctl restart docker
+
+
+#base CUDA container 테스트
+sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi

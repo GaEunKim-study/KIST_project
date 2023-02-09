@@ -1,0 +1,13 @@
+# tokencut-video
+conda create -n active-bboxes python=3.8
+conda activate active-bboxes
+conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
+git clone https://github.com/YangtaoWANG95/TokenCut_video.git
+cd TokenCut_video
+pip install -r requirements.txt
+conda install -c conda-forge pydensecrf
+
+# detectron2
+pip install cython opencv-python
+git clone https://github.com/facebookresearch/detectron2.git
+python -m pip install -e detectron2
